@@ -21,8 +21,8 @@ from blog.views import frontpage, post_detail
 from blog.views import about
 
 urlpatterns = [
-    path('', frontpage, name='frontpage'),
     path('admin/', admin.site.urls),
+    path('', frontpage, name='frontpage'),   
     path('about', about, name='about'),
     path('<slug:slug>', post_detail, name='post_detail'),
   
