@@ -31,7 +31,7 @@ environ.Env.read_env()
 SECRET_KEY = 'django-insecure-ohz(kii0+1$*yh(-pk-&02!qy615l-(31%=**v-hwkjrhmhehi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -72,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.contrib.staticfiles',
             ],
         },
     },
@@ -128,3 +129,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_URL = '/static/'
