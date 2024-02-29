@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Shiraku's Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,341;1,341&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Default light mode styles */
+        body {
+            background-color: #fff;
+            /* Light background */
+            color: #363636;
+            /* Dark text */
+            transition: background-color 0.3s, color 0.3s;
+            /* Smooth transition for color changes */
+            font-family: 'Spline Sans Mono';
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #121212;
+            /* Dark background */
+            color: #ffffff;
+            /* Light text */
+        }
+
+        .fa,
+        .fab,
+        .fad,
+        .fal,
+        .far,
+        .fas {
+            display: flex;
+        }
+
+        .navbar,
+        .navbar-brand,
+        nav {
+            background-color: #121212;
+            color: #ffff;
+
+        }
+
+        strong {
+            color: white;
+        }
+
+
+
+        .right {
+            text-align: right;
+        }
+
+        /* Ensure that all text elements (or others you want to style) also transition */
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar,
+        a,
+        .navbar-brand,
+        button {
+            transition: color 0.3s;
+        }
+
+        /* Additional styles for other elements in dark mode */
+        .dark-mode p,
+        .dark-mode h1,
+        .dark-mode h2,
+        .dark-mode h3,
+        .dark-mode h4,
+        .dark-mode h5,
+        .dark-mode h6,
+        .dark-mode .navbar,
+        .dark-mode a,
+        .dark-mode .navbar-brand,
+        .dark-mode button {
+            color: #ffffff;
+            /* Ensure text elements have light text in dark mode */
+        }
+
+        /* Style for links in dark mode to make them stand out */
+        .dark-mode a {
+            color: #4e9af1;
+            /* Light blue links for dark mode */
+        }
+    </style>
+    <script>
+        // Function to toggle dark mode and icons
+        function toggleDarkMode() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            body.classList.toggle('dark-mode');
+
+            // Check if dark mode is enabled and adjust icon
+            if (body.classList.contains('dark-mode')) {
+                themeIcon.className = 'fas fa-sun'; // Icon for light mode
+            } else {
+                themeIcon.className = 'fas fa-moon'; // Icon for dark mode
+            }
+        }
+
+        // Function to set the correct icon on page load based on the current theme
+        function setInitialThemeIcon() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+
+            if (body.classList.contains('dark-mode')) {
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+            }
+        }
+
+        // Call this function when the page loads
+        document.addEventListener('DOMContentLoaded', setInitialThemeIcon);
+    </script>
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="/" class="navbar-item"><strong>Shiraku's
+                    Blog</strong></a>
+            <a href="/about" class="navbar-item"><strong>About</strong></a>
+            <a class="navbar-item toggle-mode" onclick="toggleDarkMode()">
+                <i class="fas" id="theme-icon"></i>
+            </a>
+        </div>
+
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </section>
+</body>
+
+</html>
