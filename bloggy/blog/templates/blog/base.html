@@ -100,30 +100,36 @@
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
             body.classList.toggle('dark-mode');
-
+    
             // Check if dark mode is enabled and adjust icon
             if (body.classList.contains('dark-mode')) {
                 themeIcon.className = 'fas fa-sun'; // Icon for light mode
+                localStorage.setItem('theme', 'dark'); // Save theme preference to local storage
             } else {
                 themeIcon.className = 'fas fa-moon'; // Icon for dark mode
+                localStorage.setItem('theme', 'light'); // Save theme preference to local storage
             }
         }
-
+    
         // Function to set the correct icon on page load based on the current theme
         function setInitialThemeIcon() {
             const body = document.body;
             const themeIcon = document.getElementById('theme-icon');
-
-            if (body.classList.contains('dark-mode')) {
+            const savedTheme = localStorage.getItem('theme'); // Retrieve saved theme preference
+    
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
                 themeIcon.className = 'fas fa-sun';
             } else {
+                body.classList.remove('dark-mode');
                 themeIcon.className = 'fas fa-moon';
             }
         }
-
+    
         // Call this function when the page loads
         document.addEventListener('DOMContentLoaded', setInitialThemeIcon);
     </script>
+    
 
 </head>
 
